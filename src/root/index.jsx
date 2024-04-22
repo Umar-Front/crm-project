@@ -1,8 +1,11 @@
 import React from 'react'
 import { Container } from './style'
 
-export const Root = () => {
+const Root = () => {
   return (
-    <Container>Root</Container>
+    <Container><h2>Root</h2></Container>
   )
 }
+
+
+export default Root
