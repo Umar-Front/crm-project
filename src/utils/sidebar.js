@@ -10,8 +10,8 @@ import Course from "../assets/icons/course.svg?react"
 import HR from "../assets/icons/hr.svg?react"
 import Settings from "../assets/icons/setting.svg?react"
 
-import { Generics } from "../view/Generics"
 
+import { Generics } from "../view/Generics"
 
 
 export const sidebar = [
@@ -41,12 +41,13 @@ export const sidebar = [
     children: [
       {
         id: `2-1`,
-        title: 'BarchaLidlar',
+        title: 'Barcha Lidlar',
         path: "/lidlar/all-lids",
         isPrivate: true,
         element: Generics,
         role: ["admin", "manager"]
       },
+
       {
         id: `2-2`,
         title: 'Birinchi Dars',
@@ -55,6 +56,7 @@ export const sidebar = [
         element: Generics,
         role: ["admin", "manager"]
       },
+
       {
         id: `2-3`,
         title: 'Yangi Talabalar',
