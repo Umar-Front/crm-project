@@ -11,7 +11,7 @@ import HR from "../assets/icons/hr.svg?react"
 import Settings from "../assets/icons/setting.svg?react"
 
 
-import { Generics } from "../view/Generics"
+import { Generics } from "../components/Generics/Generics"
 
 
 export const sidebar = [
