@@ -15,7 +15,6 @@ const Root = () => {
             if (parent?.children) {
               return parent.children.map((child) => {
                 const ElementChild = child.element;
-                console.log(child.path, 'child');
                 return (
                   <Route
                     key={child.id}
