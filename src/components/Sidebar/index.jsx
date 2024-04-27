@@ -1,32 +1,50 @@
 import React from 'react'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import { Arrow, Body, ChildWrapper, Container, Logo, LogoOut, Menu, MenuItem, Side, Wrapper } from './style'
+import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Arrow, Body, ChildWrapper, Container, ExitIcon, Logo, LogoOut, Menu, MenuItem, Side, Wrapper } from './style'
 import Navbar from '../Navbar'
 import Profile from './profile'
 import sidebar from '../../utils/sidebar'
 
 export const Sidebar = () => {
 
-  const [open, setopen] = useState(['bosh'])
+  const [open, setopen] = useState([]);
+  // const [active, setactive] = useState(['']);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const onClickParent = (id) => {
-    if (open.includes(id)) {
-      console.log(open, 'if');
+  useEffect(() => {
+    const path = JSON.parse(localStorage.getItem('open'));
+    setopen(path || [])
+  }, [])
+  useEffect(() => {
+  }, [location])
 
-      let data = open.filter((val) => val !== id);
-      setopen(data)
-    } else {
-      setopen([...open, id])
-    }
-    console.log(open);
+  const onClickLogo = () => {
+    navigate(path)
   }
 
-  const navigate = useNavigate()
-  const onClickLogo = () => {
+  const onLogout = () => {
     navigate('/')
   }
 
+
+  const onClickParent = ({ id, path, children }, event) => {
+    if (!children) {
+      event.preventDefault();
+      navigate(path)
+    }
+
+    if (open?.includes(id)) {
+      let data = open.filter((val) => val !== id);
+      localStorage.setItem('open', JSON.stringify(data))
+      setopen(data)
+    } else {
+      localStorage.setItem('open', JSON.stringify([...open, id]))
+      setopen([...open, id])
+    }
+
+  }
 
 
   return (
@@ -40,31 +58,39 @@ export const Sidebar = () => {
           {sidebar.map((parent) => {
             const active = open.includes(parent.id)
             const { icon: Icon } = parent
+            const activePath = location.pathname.includes(parent.path)
             return (
-              <>
-                <MenuItem key={parent.id} onClick={() => onClickParent(parent.id)} >
-                  <MenuItem.Title >
+              <React.Fragment key={parent.id}>
+                <MenuItem
+
+                  onClick={(event) => onClickParent(parent, event)}
+                  active={activePath.toString()}
+                >
+                  <MenuItem.Title active={activePath.toString()}>
                     <Icon className="icon" /> {parent.title}
                   </MenuItem.Title >
-                  {parent?.children?.length && <Arrow active={active} />}
+                  {parent?.children?.length && <Arrow active={active.toString()} />}
                 </MenuItem>
-                <ChildWrapper active={active}>
+                <ChildWrapper active={active.toString()}>
                   {parent?.children?.map((child) => {
                     return (
-                      <MenuItem key={child.id}>
+                      <MenuItem
+                        key={child.id}
+                        to={child.path}
+                        active={(location.pathname === child.path).toString()}
+                      >
                         <MenuItem.Title > {child.title} </MenuItem.Title >
                       </MenuItem>
                     )
                   })}
                 </ChildWrapper>
-              </>
-
-
-
+              </React.Fragment>
             )
           })}
         </Menu>
-        <LogoOut>Chiqish</LogoOut>
+        <LogoOut onClick={onLogout}> <ExitIcon />
+          Chiqish
+        </LogoOut>
       </Side>
       <Body>
 

@@ -1,16 +1,19 @@
 import { styled } from "styled-components";
-import arrow from "../../assets/icons/rightArrow.svg?react"
+import arrow from "../../assets/icons/rightArrow.svg?react";
+import exit from "../../assets/icons/exit.svg?react";
+import { NavLink } from "react-router-dom";
 
 const Arrow = styled(arrow)`
   display:flex;
   margin-left:auto;
-  transform:${({ active }) => active && 'rotate(90deg)'};
+  transform:${({ active }) => active === "true" && 'rotate(90deg)'};
   transition-all: 0.1s;
 `
 
 
 const Container = styled.div`
  display:flex;
+
 `
 
 const Side = styled.div`
@@ -38,6 +41,7 @@ const Wrapper = styled.div`
   border:2px solid blue;
   margin:16px;
 
+
 `;
 
 
@@ -54,11 +58,12 @@ const Logo = styled.div`
 
 const LogoOut = styled(Logo)`
   display:flex;
+  align-items:center;
   position:sticky;
   margin-top:auto;
-  font-weight:600;
-  font-size:20px;
-  line-height:28px;
+  font-weight:500;
+  font-size:14px;
+  line-height:20px;
   color: rgba(24,144,255,1);
   padding:16px 24px;
   border-bottom:0;
@@ -118,14 +123,19 @@ const Menu = styled.div`
 `;
 
 
-const MenuItem = styled.div`
+const MenuItem = styled(NavLink)`
    display:flex;
    align-items:center;
+   text-decoration:none;
    &:hover{
     cursor:pointer;
     background-color: rgba(248,250,252,1);
 
-  }
+  };
+  padding-right:24px;
+  color: ${({ active }) => active === 'true' ? "var(--activeColor)" : "var(--primaryColor)"};
+  background-color:${({ active }) => active === 'true' ? "rgba(248,250,252,1)" : "inhernt"};
+
 `;
 
 MenuItem.Title = styled.div`
@@ -140,7 +150,11 @@ MenuItem.Title = styled.div`
     color:var(--activeColor);
     & path {
       fill:var(--activeColor);
-    }
+    };
+
+  };
+  & path {
+    fill:${({ active }) => active === 'true' && "var(--activeColor)"}
   }
 
   .icon{
@@ -152,11 +166,30 @@ MenuItem.Title = styled.div`
 
 const ChildWrapper = styled.div`
   margin-left:35px;
-  height: ${({ active }) => active ? "auto" : "0px"};
+  height: ${({ active }) => active === 'true' ? "auto" : "0px"};
+
   overflow:hidden;
-`
+
+`;
+
+const ExitIcon = styled(exit)`
+ margin-right:16px;
+`;
 
 
 
 
-export { Container, Side, Body, Wrapper, Logo, LogoOut, ProfileContainer, Menu, MenuItem, Arrow, ChildWrapper }
+export {
+  Container,
+  Side,
+  Body,
+  Wrapper,
+  Logo,
+  LogoOut,
+  ProfileContainer,
+  Menu,
+  MenuItem,
+  Arrow,
+  ChildWrapper,
+  ExitIcon
+}
