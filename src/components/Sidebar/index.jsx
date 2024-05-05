@@ -25,7 +25,7 @@ export const Sidebar = () => {
   }
 
   const onLogout = () => {
-    navigate('/')
+    navigate('/login')
   }
 
 
@@ -59,7 +59,7 @@ export const Sidebar = () => {
             const active = open.includes(parent.id)
             const { icon: Icon } = parent
             const activePath = location.pathname.includes(parent.path)
-            return (
+            return !parent.hidden ? (
               <React.Fragment key={parent.id}>
                 <MenuItem
 
@@ -85,7 +85,7 @@ export const Sidebar = () => {
                   })}
                 </ChildWrapper>
               </React.Fragment>
-            )
+            ) : null
           })}
         </Menu>
         <LogoOut onClick={onLogout}> <ExitIcon />

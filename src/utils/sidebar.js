@@ -311,7 +311,26 @@ export const sidebar = [
       },
     ]
 
-  }
+  },
+
+  {
+    id: 9,
+    title: 'Log in',
+    path: '/login',
+    isPrivate: true,
+    element: Generics,
+    role: ['admin', 'manager'],
+    hidden: true,
+  },
+  {
+    id: 10,
+    title: 'Reset',
+    path: '/reset',
+    isPrivate: true,
+    element: Generics,
+    role: ['admin', 'manager'],
+    hidden: true,
+  },
 
 ]
 

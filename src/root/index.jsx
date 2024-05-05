@@ -26,6 +26,7 @@ const Root = () => {
 
             } else
               return (
+                !parent.hidden &&
                 <Route
                   key={parent.id}
                   path={parent.path}
@@ -33,8 +34,17 @@ const Root = () => {
               )
           })};
         </Route>
+        {sidebar.map((parent) => {
+          const ElementParent = parent.element;
+          return (
+            <Route
+              key={parent.id}
+              path={parent.path}
+              element={<ElementParent />} />
+          )
+        })}
         <Route path='/' element={<Navigate to={'/analitika'} />} />
-        <Route path='*' element={<h2>Not Found</h2>} />;
+        <Route path='*' element={<h2>404 Not Found</h2>} />;
       </Routes>
     </Container>
 
