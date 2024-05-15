@@ -1,13 +1,8 @@
-import { border } from "@mui/system";
-import { styled } from "styled-components";
 
-const getValue = (value) => {
-  switch (value) {
-    case 'string': return value;
-    case 'number': return `${value}px`;
-    default: return "";
-  }
-}
+import { styled } from "styled-components";
+import getValue from "../../../hooks/style";
+
+
 
 const Container = styled.div`
   display:flex;

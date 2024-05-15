@@ -14,6 +14,7 @@ const Arrow = styled(arrow)`
 const Container = styled.div`
  display:flex;
 
+
 `
 
 const Side = styled.div`
@@ -32,13 +33,16 @@ const Side = styled.div`
   `
 const Body = styled.div`
    flex:1;
+   overflow:hidden;
+   overflow-y:scroll;
+   height:100vh;
 
   `
 
 
 const Wrapper = styled.div`
   background-color:white;
-  border:2px solid blue;
+  /* border:2px solid blue; */
   margin:16px;
 
 
@@ -54,6 +58,9 @@ const Logo = styled.div`
   border-bottom:1px solid rgba(248,250,252,1);
   cursor:pointer;
   background-color:white;
+  position:sticky;
+  top:0;
+  z-index:999;
 `;
 
 const LogoOut = styled(Logo)`

@@ -93,7 +93,6 @@ export const Sidebar = () => {
         </LogoOut>
       </Side>
       <Body>
-
         <Navbar />
         <Wrapper>
           <Outlet />
