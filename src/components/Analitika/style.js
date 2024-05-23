@@ -111,6 +111,23 @@ const SubCard = styled(Card)`
   border: 1px solid rgba(240, 240, 240, 1);
 `;
 
+const FooterWrapper = styled.div`
+ display:flex;
+ flex:1;
+ /* justify-content:space-between; */
+ gap:17px
+
+`;
+
+FooterWrapper.Email = styled.div`
+flex:2;
+
+`;
+
+FooterWrapper.Moliya = styled.div`
+ flex:1;
+`;
+
 
 
 
@@ -123,4 +140,5 @@ export {
   Counter,
   SubCard,
   Plus,
+  FooterWrapper,
 };
