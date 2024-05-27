@@ -115,7 +115,7 @@ const FooterWrapper = styled.div`
  display:flex;
  flex:1;
  /* justify-content:space-between; */
- gap:17px
+ gap:17px;
 
 `;
 
