@@ -5,6 +5,7 @@ import { Arrow, Body, ChildWrapper, Container, ExitIcon, Logo, LogoOut, Menu, Me
 import Navbar from '../Navbar'
 import Profile from './profile'
 import sidebar from '../../utils/sidebar'
+import { BreadCrumb } from '../Generics/BreadCrumb'
 
 export const Sidebar = () => {
 
@@ -29,12 +30,8 @@ export const Sidebar = () => {
   }
 
 
-  const onClickParent = ({ id, path, children }, event) => {
-    if (!children) {
-      event.preventDefault();
-      navigate(path)
-    }
-
+  const onClickParent = ({ id, path, children, title }, event) => {
+    event.preventDefault();
     if (open?.includes(id)) {
       let data = open.filter((val) => val !== id);
       localStorage.setItem('open', JSON.stringify(data))
@@ -44,9 +41,16 @@ export const Sidebar = () => {
       setopen([...open, id])
     }
 
+    if (!children) {
+
+      navigate(path, { state: { parent: title } });
+    }
   }
 
-
+  const onClickChild = (parent, child, path, e) => {
+    e.preventDefault();
+    navigate(path, { state: { parent, child } });
+  };
   return (
     <Container>
       <Side>
@@ -59,12 +63,14 @@ export const Sidebar = () => {
             const active = open.includes(parent.id)
             const { icon: Icon } = parent
             const activePath = location.pathname.includes(parent.path)
+
             return !parent.hidden ? (
               <React.Fragment key={parent.id}>
                 <MenuItem
 
                   onClick={(event) => onClickParent(parent, event)}
                   active={activePath.toString()}
+
                 >
                   <MenuItem.Title active={activePath.toString()}>
                     <Icon className="icon" /> {parent.title}
@@ -77,6 +83,7 @@ export const Sidebar = () => {
                       <MenuItem
                         key={child.id}
                         to={child.path}
+                        onClick={(e) => onClickChild(parent.title, child.title, child.path, e)}
                         active={(location.pathname === child.path).toString()}
                       >
                         <MenuItem.Title > {child.title} </MenuItem.Title >
@@ -95,6 +102,7 @@ export const Sidebar = () => {
       <Body>
         <Navbar />
         <Wrapper>
+          <BreadCrumb />
           <Outlet />
         </Wrapper>
       </Body>

@@ -11,7 +11,7 @@ import HR from "../assets/icons/hr.svg?react"
 import Settings from "../assets/icons/setting.svg?react"
 
 
-import { Generics } from "../components/Generics/Generics";
+import Generics from "../view/Generiks"
 import { AnalitikaView } from "../view/AnalitikaView"
 
 

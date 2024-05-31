@@ -18,24 +18,28 @@ const Container = styled.div`
 `
 
 const Side = styled.div`
-   position:relative;
-   display:flex;
-   flex-direction:column;
-   max-width:280px;
-   min-width:280px;
-   height:100vh;
-   background-color: white;
-   overflow:hidden;
-   overflow-y:scroll;
-   &::-webkit-scrollbar{
-    width:0;
-   }
-  `
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 280px;
+  max-width: 280px;
+  min-width: 280px;
+  background-color: white;
+  /* border: 2px solid red; */
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  `;
 const Body = styled.div`
-   flex:1;
-   overflow:hidden;
-   overflow-y:scroll;
-   height:100vh;
+  flex: 1;
+  height: 100vh;
+  min-width: calc(1440px - 280px);
+  /* border: 2px solid blue; */
+  overflow-y: scroll;
 
   `
 
