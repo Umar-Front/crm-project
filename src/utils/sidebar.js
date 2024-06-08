@@ -13,6 +13,7 @@ import Settings from "../assets/icons/setting.svg?react"
 
 import Generics from "../view/Generiks"
 import { AnalitikaView } from "../view/AnalitikaView"
+import AllLidsView from "../view/Lids/All"
 
 
 
@@ -46,7 +47,7 @@ export const sidebar = [
         title: 'Barcha Lidlar',
         path: "/lidlar/all-lids",
         isPrivate: true,
-        element: Generics,
+        element: AllLidsView,
         role: ["admin", "manager"]
       },
 
