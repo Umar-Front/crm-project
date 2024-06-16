@@ -13,7 +13,8 @@ import Settings from "../assets/icons/setting.svg?react"
 
 import Generics from "../view/Generiks"
 import { AnalitikaView } from "../view/AnalitikaView"
-import AllLidsView from "../view/Lids/All"
+import { AllLidsView } from "../view/Lids/All"
+
 
 
 
