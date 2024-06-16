@@ -1,9 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
+import Root from './root'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <h2>Welcome to CRM-project</h2>
+    <BrowserRouter>
+      <Root />
+    </BrowserRouter>
   </React.StrictMode>,
 )
