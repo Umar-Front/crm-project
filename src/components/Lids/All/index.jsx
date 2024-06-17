@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { GenericTable } from "../../Generics/Table";
 import { Container } from "./style";
+import { BreadCrumb } from '../../Generics/BreadCrumb'
 
 export const AllLids = () => {
   const headCells = [
@@ -59,9 +61,16 @@ export const AllLids = () => {
       admin: "Webbrain Admin",
     },
   ];
+
+  const [open, setOpen] = useState(false)
   return (
     <Container>
-      <GenericTable headCells={headCells} rows={rows} />
+      <BreadCrumb>
+        <button onClick={() => setOpen(!open)}>Filter</button>
+        <button onClick={() => setOpen(!open)}>Import</button>
+        <button onClick={() => setOpen(!open)}>Buyurtma berish</button>
+      </BreadCrumb>
+      <GenericTable open={open} headCells={headCells} rows={rows} />
     </Container>
   );
 };

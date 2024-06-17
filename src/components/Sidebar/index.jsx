@@ -5,7 +5,6 @@ import { Arrow, Body, ChildWrapper, Container, ExitIcon, Logo, LogoOut, Menu, Me
 import Navbar from '../Navbar'
 import Profile from './profile'
 import sidebar from '../../utils/sidebar'
-import { BreadCrumb } from '../Generics/BreadCrumb'
 
 export const Sidebar = () => {
 
@@ -102,7 +101,6 @@ export const Sidebar = () => {
       <Body>
         <Navbar />
         <Wrapper>
-          <BreadCrumb />
           <Outlet />
         </Wrapper>
       </Body>
