@@ -1,11 +1,16 @@
 import React from 'react'
 import Input from '../Generics/Input'
-import GenericSelect from './Select'
 import { Container, Section, SearchIcon } from './style'
 import Time from './Time'
 import DatePicker from "./DateTimePicker"
+import GenericSelect from '../Generics/Select'
 
 export const Navbar = () => {
+  const data = [
+    { value: 'uzbek', title: 'Uzbek' },
+    { value: 'russian', title: 'Russian' },
+    { value: 'english', title: 'English' },
+  ]
   return (
     <Container>
       <Input
@@ -16,7 +21,7 @@ export const Navbar = () => {
       <Section>
         <Time />
         <DatePicker />
-        <GenericSelect />
+        <GenericSelect label={'Language'} data={data} />
       </Section>
     </Container>
   )

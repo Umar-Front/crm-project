@@ -23,7 +23,7 @@ const Button = styled.button`
  display:flex;
  align-items:center;
  justify-content:center;
- background-color:white;
+ background-color:transparent;
  border:1px solid  var(--primaryColor);
  border-radius:8px;
  padding: 10px 16px;
@@ -35,7 +35,7 @@ const Button = styled.button`
   text-align:left;
   gap:8px;
   -webkit-user-select: none; /* Safari */
-  user-select: none; Standard syntax
+  user-select: none;
  &:active{
   transform: scale(0.98);
   opacity:0.8;

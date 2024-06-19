@@ -32,7 +32,7 @@ const Timer = styled.div`
     status ? "var(--secondaryColor)" : "var(--primaryColor)"
   };
     font-weight:600;
-    font-size:18px;
+    font-size:20px;
     line-height:32px;;
     padding:5px;
  `;

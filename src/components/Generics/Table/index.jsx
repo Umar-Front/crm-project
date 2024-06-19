@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
+import GenericSelect from "../Select";
 
 function EnhancedTableHead(props) {
   const { onSelectAllClick, numSelected, rowCount, headCells } = props;
@@ -70,15 +71,25 @@ export function GenericTable(props) {
   };
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
-
+  const data1 = [
+    { value: 'uzbek', title: 'Uzbek' },
+    { value: 'russian', title: 'Russian' },
+    { value: 'english', title: 'English' },
+  ]
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ marginTop: '24px', height: open ? '64px' : 0, overflow: "hidden" }} >
 
         <Table>
           <TableBody>
-            <TableRow>
-              <TableCell sx={{ border: 0 }}>Test</TableCell>
+            <TableRow sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <GenericSelect value='Uzbek' data={data1} />
+              <GenericSelect value="English" data={data1} />
+              <GenericSelect value="Russian" data={data1} />
+              <GenericSelect data={data1} />
+              <GenericSelect data={data1} />
+              <GenericSelect data={data1} />
+
             </TableRow>
           </TableBody>
         </Table>
